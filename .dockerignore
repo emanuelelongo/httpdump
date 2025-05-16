@@ -1,0 +1,12 @@
+.git
+.gitignore
+.vscode
+.idea
+*.swp
+*.swo
+*.log
+Taskfile.yml
+go.sum
+go.mod
+.DS_Store
+Thumbs.db

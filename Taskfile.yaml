@@ -1,0 +1,27 @@
+version: '3'
+
+vars:
+  IMAGE: emanuelelongo/httpdump
+  TAG: latest
+
+tasks:
+  docker:build:
+    desc: Build the Docker image using a multi-stage Dockerfile
+    cmds:
+      - docker build -t {{.IMAGE}}:{{.TAG}} .
+
+  docker:run:
+    desc: Run the container locally on port 8080
+    cmds:
+      - docker run --rm -p 8080:8080 {{.IMAGE}}:{{.TAG}}
+
+  docker:push:
+    desc: Push the Docker image to the container registry
+    cmds:
+      - docker push {{.IMAGE}}:{{.TAG}}
+
+  docker:all:
+    desc: Build and push the Docker image
+    cmds:
+      - task: docker:build
+      - task: docker:push
